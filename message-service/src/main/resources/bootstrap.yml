@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: message-service
+
+  cloud:
+    config:
+      discovery:
+        service-id: ${CONFIG_SERVICE_ID:config-server}
+        enabled: true
+    inetutils:
+      ignored-interfaces:
+        - ".*"
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        ${EUREKA_SERVERS}

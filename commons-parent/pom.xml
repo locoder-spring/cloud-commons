@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>icu.lowcoder.spring.commons</groupId>
+        <artifactId>commons-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>icu.lowcoder.spring.cloud</groupId>
+    <artifactId>commons-parent</artifactId>
+    <packaging>pom</packaging>
+    <name>lowcoder-spring-cloud-commons-parent</name>
+    <description>lowcoder spring cloud commons parent</description>
+
+    <properties>
+        <icu-lowcoder-spring-cloud.version>3.2.0</icu-lowcoder-spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
+        <caffeine.version>2.8.6</caffeine.version>
+
+        <!-- default docker build properties -->
+        <docker-maven-plugin.version>1.2.2</docker-maven-plugin.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>docker-build</id>
+            <properties>
+                <docker-maven-plugin.base.image>${docker.build.base.image}</docker-maven-plugin.base.image>
+                <docker-maven-plugin.image.name>${project.artifactId}</docker-maven-plugin.image.name>
+                <docker-maven-plugin.server.id>${docker.build.server.id}</docker-maven-plugin.server.id>
+                <docker-maven-plugin.registry.url>${docker.build.registry.url}</docker-maven-plugin.registry.url>
+                <docker-maven-plugin.registry.namespace>${docker.build.registry.namespace}</docker-maven-plugin.registry.namespace>
+                <docker-maven-plugin.push.image>${docker.build.push.image}</docker-maven-plugin.push.image>
+                <docker-maven-plugin.image.tag>${docker.build.image.tag}</docker-maven-plugin.image.tag>
+                <docker-maven-plugin.host>${docker.build.host}</docker-maven-plugin.host>
+                <docker-maven-plugin.skip.build>true</docker-maven-plugin.skip.build>
+                <docker-maven-plugin.skip.docker>true</docker-maven-plugin.skip.docker>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>dockerBuild</name>
+                </property>
+            </activation>
+        </profile>
+        <profile>
+            <id>docker-build-local</id>
+            <properties>
+                <docker-maven-plugin.host>${docker.build.local.docker.host}</docker-maven-plugin.host>
+                <docker-maven-plugin.registry.url>${docker.build.local.registry.url}</docker-maven-plugin.registry.url>
+                <docker-maven-plugin.image.tag>${docker.build.local.image.tag}</docker-maven-plugin.image.tag>
+                <docker-maven-plugin.skip.build>false</docker-maven-plugin.skip.build>
+                <docker-maven-plugin.skip.docker>false</docker-maven-plugin.skip.docker>
+            </properties>
+            <activation>
+                <property>
+                    <name>dockerBuild</name>
+                    <value>local</value>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>icu.lowcoder.spring.commons</groupId>
+            <artifactId>actuator-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>icu.lowcoder.spring.cloud</groupId>
+                <artifactId>admin-ui-extensions</artifactId>
+                <version>${icu-lowcoder-spring-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>icu.lowcoder.spring.cloud</groupId>
+                <artifactId>message-commons</artifactId>
+                <version>${icu-lowcoder-spring-cloud.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker-maven-plugin.version}</version>
+
+                    <executions>
+                        <execution>
+                            <id>build</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <skipDocker>${docker-maven-plugin.skip.docker}</skipDocker>
+
+                        <dockerHost>${docker-maven-plugin.host}</dockerHost>
+
+                        <serverId>${docker-maven-plugin.server.id}</serverId>
+                        <registryUrl>${docker-maven-plugin.registry.url}</registryUrl>
+                        <baseImage>${docker-maven-plugin.base.image}</baseImage>
+                        <env>
+                            <JAVA_OPTS>""</JAVA_OPTS>
+                        </env>
+                        <entryPoint>exec java $JAVA_OPTS -jar /${project.build.finalName}.jar</entryPoint>
+                        <runs>
+                            <run>echo "Asia/Shanghai" > /etc/timezone</run>
+                        </runs>
+                        <imageName>${docker-maven-plugin.registry.url}/${docker-maven-plugin.registry.namespace}/${docker-maven-plugin.image.name}</imageName>
+                        <imageTags>
+                            <imageTag>${project.version}</imageTag>
+                            <imageTag>${docker-maven-plugin.image.tag}</imageTag>
+                        </imageTags>
+
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+
+                        <skipDockerBuild>${docker-maven-plugin.skip.build}</skipDockerBuild>
+                        <pushImage>${docker-maven-plugin.push.image}</pushImage>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

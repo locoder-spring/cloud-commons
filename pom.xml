@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>icu.lowcoder.spring.cloud</groupId>
+        <artifactId>commons-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>commons-builder</artifactId>
+    <name>spring cloud commons builder</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>commons-parent</module>
+        <module>service-parent</module>
+        <module>authentication-service</module>
+        <module>organization-service</module>
+        <module>file-service</module>
+        <module>message-commons</module>
+        <module>message-service</module>
+        <module>db-config-service</module>
+        <module>content-service</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
