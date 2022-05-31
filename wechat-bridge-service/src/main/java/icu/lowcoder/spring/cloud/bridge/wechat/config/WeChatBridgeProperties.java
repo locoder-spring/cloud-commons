@@ -15,7 +15,7 @@ public class WeChatBridgeProperties {
     private String callbackUrl = "https://api-host/v3/bridge/we-chat/authorize/callback";
     private String authorizeUrl = "https://api-host/v3/bridge/we-chat/authorize";
     private String authorizeCacheKeyPrefix = "icu.lowcoder.spring.cloud.bridge.wechat.authorize.cache";
-    private String authorizeCookieKey = "locoder_spring_wechat_bridge_auth_key";
+    private String authorizeCookieKey = "lowcoder_spring_wechat_bridge_auth_key";
 
     @Getter
     @Setter

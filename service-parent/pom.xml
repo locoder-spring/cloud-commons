@@ -13,7 +13,7 @@
 
     <artifactId>service-parent</artifactId>
     <packaging>pom</packaging>
-    <name>locoder-spring-cloud-service-parent</name>
+    <name>lowcoder-spring-cloud-service-parent</name>
     <description>lowcoder spring cloud service parent</description>
 
     <dependencies>
