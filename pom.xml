@@ -25,6 +25,7 @@
         <module>message-service</module>
         <module>db-config-service</module>
         <module>content-service</module>
+        <module>wechat-bridge-service</module>
     </modules>
 
     <build>
