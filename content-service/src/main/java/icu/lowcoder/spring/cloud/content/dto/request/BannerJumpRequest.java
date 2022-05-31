@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.Map;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 3:09 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 3:09 下午
  */
 @Data
 public class BannerJumpRequest {

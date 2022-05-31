@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 10:37 上午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 10:37 上午
  */
 @Entity
 @EqualsAndHashCode(callSuper = true)

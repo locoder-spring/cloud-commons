@@ -11,7 +11,6 @@ import java.util.UUID;
  * 查询员工参数
  *
  * @author suchu
- * @date 2020/11/12
  */
 @Data
 public class GetEmployeeParams {

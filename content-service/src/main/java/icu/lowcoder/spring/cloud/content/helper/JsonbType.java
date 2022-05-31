@@ -19,9 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 11:06 上午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 11:06 上午
  */
 @Component
 public class JsonbType implements UserType {

@@ -1,12 +1,11 @@
 package icu.lowcoder.spring.cloud.organization.manager;
 
-import icu.lowcoder.spring.commons.jpa.CommonEntity;
 import icu.lowcoder.spring.cloud.organization.dao.AuthorityRepository;
 import icu.lowcoder.spring.cloud.organization.entity.Authority;
+import icu.lowcoder.spring.commons.jpa.CommonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.jws.Oneway;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

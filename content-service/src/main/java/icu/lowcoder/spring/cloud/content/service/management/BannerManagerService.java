@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 1:49 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 1:49 下午
  */
 @RequestMapping("/management/banners")
 public interface BannerManagerService {

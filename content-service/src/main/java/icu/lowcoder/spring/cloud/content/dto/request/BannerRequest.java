@@ -9,9 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 2:01 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 2:01 下午
  */
 @Data
 public class BannerRequest {

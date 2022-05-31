@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.UUID;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/2 1:39 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/2 1:39 下午
  */
 @Data
 @Builder

@@ -14,7 +14,7 @@ import java.util.Map;
  * 小程序订阅消息Channel
  *
  * @author suchu
- * @date 2021/4/19
+ * {@code @date} 2021/4/19
  */
 @Getter
 @Setter

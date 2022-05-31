@@ -7,7 +7,7 @@ import org.junit.Test;
 
 /**
  * @author suchu
- * @date 2020/12/17
+ * {@code @date} 2020/12/17
  */
 @Slf4j
 public class TestDingTalkEntity {

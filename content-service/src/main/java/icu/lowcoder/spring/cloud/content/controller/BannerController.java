@@ -19,9 +19,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 1:48 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 1:48 下午
  */
 @RestController
 public class BannerController implements BannerService {

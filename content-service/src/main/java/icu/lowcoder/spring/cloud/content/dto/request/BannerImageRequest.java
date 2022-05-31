@@ -7,9 +7,9 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 2:07 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 2:07 下午
  */
 @Data
 public class BannerImageRequest {

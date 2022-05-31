@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/1 1:49 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/1 1:49 下午
  */
 @RequestMapping("/banners")
 public interface BannerService {

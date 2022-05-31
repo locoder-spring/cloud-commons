@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @author suchu
- * @date 2021/4/19
+ * {@code @date} 2021/4/19
  */
 @Getter
 @AllArgsConstructor

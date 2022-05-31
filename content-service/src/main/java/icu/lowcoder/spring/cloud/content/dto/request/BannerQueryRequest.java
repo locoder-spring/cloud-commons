@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.Set;
 
 /**
- * @Author: yanhan
- * @Description:
- * @Date: create in 2021/3/2 1:49 下午
+ * @author  yanhan
+ * description:
+ * date:  create in 2021/3/2 1:49 下午
  */
 @Data
 public class BannerQueryRequest {
